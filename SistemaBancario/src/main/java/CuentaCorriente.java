@@ -2,20 +2,22 @@ import lombok.Getter;
 import lombok.Setter;
 
 
-public class CuentaCorriente extends Cuenta{
+public class CuentaCorriente extends Cuenta {
+    private final double porcentajeCargoAdicional = 3;
     @Setter
     @Getter
     private double saldoDescubierto;
-    private final double porcentajeCargoAdicional = 3;
     private boolean usoDescubierto;
     private double saldoDescubiertoUsado;
+
     public CuentaCorriente(double saldo, String nroCuenta, Titular titular, double saldoDescubierto) {
         super(saldo, nroCuenta, titular);
         this.saldoDescubierto = saldoDescubierto;
     }
+
     @Override
-    boolean elSaldoEsSuficiente(double montoSolicitado) {
-        return (this.getSaldo() + this.getSaldoDescubierto()) > montoSolicitado;
+    boolean elSaldoEsSuficiente(double monto) {
+        return (this.getSaldo() + this.getSaldoDescubierto()) > monto;
     }
 
     @Override
@@ -51,6 +53,10 @@ public class CuentaCorriente extends Cuenta{
         return (monto * this.porcentajeCargoAdicional) / 100;
     }
 
+    @Override
+    boolean optaPorElPrestamo() {
+        return this.isHabilitada() && (this.getSaldo() + this.getSaldoDescubierto()) >= 10000;
+    }
 
 
 }

@@ -6,6 +6,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class Titular {
+    private final int cantidadCaracteresHackeo = 15;
     private String nombreYapellido;
     private String documento;
     private String telefono;
@@ -21,5 +22,9 @@ public class Titular {
                 ", documento='" + documento + '\'' +
                 ", telefono='" + telefono + '\'' +
                 '}';
+    }
+
+    public boolean tieneCantidadCaracteresParaHackeo() {
+        return this.getNombreYapellido().length() > this.cantidadCaracteresHackeo;
     }
 }

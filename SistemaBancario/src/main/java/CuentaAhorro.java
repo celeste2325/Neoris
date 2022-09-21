@@ -1,12 +1,13 @@
-public class CuentaAhorro extends Cuenta{
+public class CuentaAhorro extends Cuenta {
     private final double porcentajeCargoAdicional = 1.5;
 
     public CuentaAhorro(double saldo, String nroCuenta, Titular titular) {
         super(saldo, nroCuenta, titular);
     }
+
     @Override
-    boolean elSaldoEsSuficiente(double montoSolicitado) {
-        return this.getSaldo() > montoSolicitado;
+    boolean elSaldoEsSuficiente(double monto) {
+        return this.getSaldo() > monto;
     }
 
     @Override
@@ -30,4 +31,8 @@ public class CuentaAhorro extends Cuenta{
         return (monto * this.porcentajeCargoAdicional) / 100;
     }
 
+    @Override
+    boolean optaPorElPrestamo() {
+        return this.isHabilitada() && this.getSaldo() >= 10000;
+    }
 }
