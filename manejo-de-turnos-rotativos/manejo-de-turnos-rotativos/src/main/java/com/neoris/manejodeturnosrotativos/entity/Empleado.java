@@ -22,16 +22,16 @@ public class Empleado{
     @NotBlank
     private String nombreYapellido;
 
-    //queda abierto a que se puedan modificar las horas permitidas para trabajar de acuerdo al requerimiento de la organizacion
+    //queda abierto para que se puedan asignar las horas permitidas para trabajar de acuerdo al requerimiento de la organizacion
     @Basic
     @Column(name = "minimoDeHorasPermitidasSemanal")
-    private int minimoDeHorasPermitidasSemanal = 30;
+    private Integer minimoDeHorasPermitidasSemanal = 30;
 
     @Basic
     @Column(name = "maximoDeHorasPermitidasSemanal")
-    private int maximoDeHorasPermitidasSemanal = 48;
+    private Integer maximoDeHorasPermitidasSemanal = 48;
 
     @Basic
     @Column(name = "maximoDeHorasPermitidasDiario")
-    private int maximoDeHorasPermitidasDiario = 12;
+    private Integer maximoDeHorasPermitidasDiario = 12;
 }
