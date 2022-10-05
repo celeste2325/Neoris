@@ -14,7 +14,7 @@ public class EmpleadoServiceImpl implements EmpleadoService {
 
     @Override
     public Empleado addEmpleado(Empleado newEmpleado) throws EmpleadoExistente {
-        if (!empleadoRepository.existsById(newEmpleado.getTipo_documento())){
+        if (!empleadoRepository.existsById(newEmpleado.getTipo_documento())){ //evita la carga de un empleado existente
             return this.empleadoRepository.save(newEmpleado);
         } else throw new EmpleadoExistente("El empleado ya fue cargado");
     }

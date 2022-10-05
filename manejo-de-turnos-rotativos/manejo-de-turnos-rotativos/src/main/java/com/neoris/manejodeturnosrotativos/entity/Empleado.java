@@ -14,15 +14,15 @@ import java.io.Serializable;
 @Getter
 public class Empleado{
     @EmbeddedId
-    private EmpleadoPk tipo_documento;
+    private EmpleadoPk tipo_documento; //clave compuesta
 
     @Basic
     @Column(name = "nombreYapellido")
-
     @NotNull
     @NotBlank
     private String nombreYapellido;
 
+    //queda abierto a que se puedan modificar las horas permitidas para trabajar de acuerdo al requerimiento de la organizacion
     @Basic
     @Column(name = "minimoDeHorasPermitidasSemanal")
     private int minimoDeHorasPermitidasSemanal = 30;
